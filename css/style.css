@@ -134,6 +134,21 @@ body {
     }
 }
 
+@keyframes moveInBottom {
+    /* Inicio da animação */
+    0% {
+        opacity: 0;
+        transform: translateY(30px); /*para mover para baixo é um valor positivo*/
+    }
+
+    /* Final da animação */
+    100% {
+        opacity: 1;
+        /* volta para o local definido em heading-primary-main*/
+        transform: translate(0);
+    }
+}
+
 .btn:link, 
 .btn:visited {
     text-transform: uppercase;
@@ -141,17 +156,56 @@ body {
     padding: 15px 40px;
     display: inline-block;
     border-radius: 100px;
+    transition: all.2s; /* sempre deve estar no estado inicial */
+    
+    position: relative; /*botao com .btn::after usara como referencia*/
 }
 
 .btn:hover {
     transform: translateY(-3px);
+    box-shadow: 0 /* direçao x*/ 10px /*direçao y*/ 20px /*blur*/ rgba(0, 0, 0, .2) /*cor*/;
 }
 
 .btn:active {
     transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
 }
 
 .btn-white {
     background-color: #fff;
     color: #777;
+}
+
+/* pseudo elemento*/
+/*elemento after é tratado como elemento filho*/
+.btn::after {
+    /*nesse caso queremos o botao exatamente igual*/
+    content: ""; /*sempre deve ser declarado, mesmo que seja vazio*/
+    display: inline-block;
+    height: 100%; /*se basea no tamanho do botao*/
+    width: 100%;  /*se basea no tamanho do botao*/
+    border-radius: 100px;
+
+    /*colocar atras*/
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+
+    /*ponto inicial para .btn:hover::after*/
+    transition: all .4s;
+}
+
+.btn-white::after {
+    background-color: #FFF;
+}
+
+.btn:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+}
+
+.btn-animated {
+    animation: moveInBottom .5s ease-out .75s /*tempo de delay*/;
+    animation-fill-mode: backwards;/*adiciona automaticamente opacidade 0 antes da animação começar*/
 }
