@@ -13,13 +13,17 @@ Dark green: #28b485
     box-sizing: border-box; /* bordas e padding nao serão adicionados ao height e width total*/
 }
 
+html {
+    font-size: 10px;
+}
+
 body {
     font-family: 'Lato', sans-serif; /* Fonte por boas praticas é no body, elemento pai de todos*/
     font-weight: 400;
-    font-size: 16px;
+    /* font-size: 16px; */
     line-height: 1.7;
     color: #777;
-    padding: 30px;  /*espaçamento exclusivo para esse site*/
+    padding: 3rem;  /*espaçamento exclusivo para esse site*/
 }
 
 .header {
@@ -41,12 +45,12 @@ body {
 
 .logo-box {
     position: absolute;
-    top: 40px;
-    left: 40px;
+    top: 4rem;
+    left: 4rem;
 }
 
 .logo {
-    height: 35px;
+    height: 3.5rem;
 }
 
 .text-box {
@@ -63,14 +67,14 @@ body {
 
     /* arruma o bug da letra subir um pouco por causa da animação */
     backface-visibility: hidden;
-    margin-bottom: 60px;
+    margin-bottom: 6rem;
 }
 
 .heading-primary-main {
     display: block;
-    font-size: 60px;
+    font-size: 6rem;
     font-weight: 400;
-    letter-spacing: 35px;
+    letter-spacing: 3.5rem;
 
     /* propriedades de animação uma a uma*/
     animation-name: moveInLeft; /*chama animação criada*/
@@ -81,8 +85,8 @@ body {
 .heading-primary-sub {
     display: block;
     font-weight: 700;
-    font-size: 20px;
-    letter-spacing: 17.4px;
+    font-size: 2rem;
+    letter-spacing: 1.75rem;
 
     /*propriedades de animação combinadas*/
     animation: moveInRight 1s ease-out;
@@ -97,12 +101,12 @@ body {
     0% {
         opacity: 0;
         /* mover apenas eixo x para a esquerda*/
-        transform: translateX(-100px);
+        transform: translateX(-10rem);
     }
 
     80% {
         /* move eixo x para a direita*/
-        transform: translateX(10px);
+        transform: translateX(1rem);
     }
 
     /* Final da animação */
@@ -118,12 +122,12 @@ body {
     0% {
         opacity: 0;
         /* mover apenas eixo x para a esquerda*/
-        transform: translateX(100px);
+        transform: translateX(10rem);
     }
 
     80% {
         /* move eixo x para a direita*/
-        transform: translateX(-10px);
+        transform: translateX(-1rem);
     }
 
     /* Final da animação */
@@ -138,7 +142,7 @@ body {
     /* Inicio da animação */
     0% {
         opacity: 0;
-        transform: translateY(30px); /*para mover para baixo é um valor positivo*/
+        transform: translateY(3rem); /*para mover para baixo é um valor positivo*/
     }
 
     /* Final da animação */
@@ -153,9 +157,10 @@ body {
 .btn:visited {
     text-transform: uppercase;
     text-decoration: none;
-    padding: 15px 40px;
+    padding: 1.5rem 4rem;
+    font-size: 1.6rem;
     display: inline-block;
-    border-radius: 100px;
+    border-radius: 10rem;
     transition: all.2s; /* sempre deve estar no estado inicial */
     
     position: relative; /*botao com .btn::after usara como referencia*/
@@ -163,12 +168,12 @@ body {
 
 .btn:hover {
     transform: translateY(-3px);
-    box-shadow: 0 /* direçao x*/ 10px /*direçao y*/ 20px /*blur*/ rgba(0, 0, 0, .2) /*cor*/;
+    box-shadow: 0 /* direçao x*/ 1rem /*direçao y*/ 2rem /*blur*/ rgba(0, 0, 0, .2) /*cor*/;
 }
 
 .btn:active {
     transform: translateY(-1px);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .2);
 }
 
 .btn-white {
