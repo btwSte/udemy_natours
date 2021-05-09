@@ -1,0 +1,63 @@
+.btn {
+    &:link, 
+    &:visited{
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 1.5rem 4rem;
+        font-size: 1.6rem;
+        display: inline-block;
+        border-radius: 10rem;
+        transition: all.2s; /* sempre deve estar no estado inicial */
+        
+        position: relative; /*botao com .btn::after usara como referencia*/
+    }
+
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 /* direçao x*/ 1rem /*direçao y*/ 2rem /*blur*/ rgba($color-black, .2) /*cor*/;
+
+        &::after {
+            transform: scaleX(1.4) scaleY(1.6);
+            opacity: 0;
+        }
+    }
+    
+    &:active {
+        transform: translateY(-1px);
+        box-shadow: 0 .5rem 1rem rgba($color-black, .2);
+    }
+    
+    &--white {
+        background-color: $color-white;
+        color: $color-gray-dark;
+
+        &:after {
+            background-color: $color-white;
+        }
+    }
+    
+    /* pseudo elemento*/
+    /*elemento after é tratado como elemento filho*/
+    &::after {
+        /*nesse caso queremos o botao exatamente igual*/
+        content: ""; /*sempre deve ser declarado, mesmo que seja vazio*/
+        display: inline-block;
+        height: 100%; /*se basea no tamanho do botao*/
+        width: 100%;  /*se basea no tamanho do botao*/
+        border-radius: 100px;
+    
+        /*colocar atras*/
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+    
+        /*ponto inicial para .btn:hover::after*/
+        transition: all .4s;
+    }
+    
+    &--animated {
+        animation: moveInBottom .5s ease-out .75s /*tempo de delay*/;
+        animation-fill-mode: backwards;/*adiciona automaticamente opacidade 0 antes da animação começar*/
+    }
+}

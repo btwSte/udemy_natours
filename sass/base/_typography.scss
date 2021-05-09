@@ -1,0 +1,40 @@
+body {
+    font-family: 'Lato', sans-serif; /* Fonte por boas praticas é no body, elemento pai de todos*/
+    font-weight: 400;
+    /* font-size: 16px; */
+    line-height: 1.7;
+    color: $color-gray-dark;
+    padding: 3rem;  /*espaçamento exclusivo para esse site*/
+}
+
+.heading-primary {
+    color: $color-white;
+    text-transform: uppercase;
+
+    /* arruma o bug da letra subir um pouco por causa da animação */
+    backface-visibility: hidden;
+    margin-bottom: 6rem;
+
+
+    &--main {
+        display: block;
+        font-size: 6rem;
+        font-weight: 400;
+        letter-spacing: 3.5rem;
+    
+        /* propriedades de animação uma a uma*/
+        animation-name: moveInLeft; /*chama animação criada*/
+        animation-duration: 1s; /*tempo de duração*/
+        animation-timing-function: ease-out; /* estilo da animação */
+    }
+    
+    &--sub {
+        display: block;
+        font-weight: 700;
+        font-size: 2rem;
+        letter-spacing: 1.75rem;
+    
+        /*propriedades de animação combinadas*/
+        animation: moveInRight 1s ease-out;
+    } 
+}

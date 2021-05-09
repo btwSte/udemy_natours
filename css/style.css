@@ -1,80 +1,4 @@
 @charset "UTF-8";
-*,
-*::after,
-*::before {
-  margin: 0;
-  padding: 0;
-  box-sizing: inherit; }
-
-html {
-  font-size: 62.5%; }
-
-body {
-  font-family: 'Lato', sans-serif;
-  /* Fonte por boas praticas é no body, elemento pai de todos*/
-  font-weight: 400;
-  /* font-size: 16px; */
-  line-height: 1.7;
-  color: #777;
-  padding: 3rem;
-  /*espaçamento exclusivo para esse site*/
-  box-sizing: border-box;
-  /* bordas e padding nao serão adicionados ao height e width total*/ }
-
-.header {
-  height: 95vh;
-  /* Para adicionar cor em acima da imagem podemos utilizar o rgba e apos isso colocar uma imagem de fundo*/
-  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
-  background-size: cover;
-  background-position: top;
-  position: relative;
-  /* efeito de "corte" na imagem*/
-  /*sempre em sentido horario, eixos x y*/
-  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); }
-
-.header__logo-box {
-  position: absolute;
-  top: 4rem;
-  left: 4rem; }
-
-.header__logo {
-  height: 3.5rem; }
-
-.header__text-box {
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center; }
-
-.heading-primary {
-  color: #fff;
-  text-transform: uppercase;
-  /* arruma o bug da letra subir um pouco por causa da animação */
-  backface-visibility: hidden;
-  margin-bottom: 6rem; }
-
-.heading-primary--main {
-  display: block;
-  font-size: 6rem;
-  font-weight: 400;
-  letter-spacing: 3.5rem;
-  /* propriedades de animação uma a uma*/
-  animation-name: moveInLeft;
-  /*chama animação criada*/
-  animation-duration: 1s;
-  /*tempo de duração*/
-  animation-timing-function: ease-out;
-  /* estilo da animação */ }
-
-.heading-primary--sub {
-  display: block;
-  font-weight: 700;
-  font-size: 2rem;
-  letter-spacing: 1.75rem;
-  /*propriedades de animação combinadas*/
-  animation: moveInRight 1s ease-out; }
-
 /* 
     Animaçao de texto no header 
     pode ser definido qualquer % para animação
@@ -121,59 +45,124 @@ body {
     /* volta para o local definido em heading-primary-main*/
     transform: translate(0); } }
 
-.btn:link,
-.btn:visited {
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; }
+
+html {
+  font-size: 62.5%; }
+
+body {
+  font-family: 'Lato', sans-serif;
+  /* Fonte por boas praticas é no body, elemento pai de todos*/
+  font-weight: 400;
+  /* font-size: 16px; */
+  line-height: 1.7;
+  color: #777;
+  padding: 3rem;
+  /*espaçamento exclusivo para esse site*/
+  box-sizing: border-box;
+  /* bordas e padding nao serão adicionados ao height e width total*/ }
+
+.heading-primary {
+  color: #fff;
   text-transform: uppercase;
-  text-decoration: none;
-  padding: 1.5rem 4rem;
-  font-size: 1.6rem;
-  display: inline-block;
-  border-radius: 10rem;
-  transition: all 0.2s;
-  /* sempre deve estar no estado inicial */
+  /* arruma o bug da letra subir um pouco por causa da animação */
+  backface-visibility: hidden;
+  margin-bottom: 6rem; }
+  .heading-primary--main {
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
+    /* propriedades de animação uma a uma*/
+    animation-name: moveInLeft;
+    /*chama animação criada*/
+    animation-duration: 1s;
+    /*tempo de duração*/
+    animation-timing-function: ease-out;
+    /* estilo da animação */ }
+  .heading-primary--sub {
+    display: block;
+    font-weight: 700;
+    font-size: 2rem;
+    letter-spacing: 1.75rem;
+    /*propriedades de animação combinadas*/
+    animation: moveInRight 1s ease-out; }
+
+.btn {
+  /* pseudo elemento*/
+  /*elemento after é tratado como elemento filho*/ }
+  .btn:link, .btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+    font-size: 1.6rem;
+    display: inline-block;
+    border-radius: 10rem;
+    transition: all 0.2s;
+    /* sempre deve estar no estado inicial */
+    position: relative;
+    /*botao com .btn::after usara como referencia*/ }
+  .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
+    .btn:hover::after {
+      transform: scaleX(1.4) scaleY(1.6);
+      opacity: 0; }
+  .btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
+  .btn--white {
+    background-color: #fff;
+    color: #777; }
+    .btn--white:after {
+      background-color: #fff; }
+  .btn::after {
+    /*nesse caso queremos o botao exatamente igual*/
+    content: "";
+    /*sempre deve ser declarado, mesmo que seja vazio*/
+    display: inline-block;
+    height: 100%;
+    /*se basea no tamanho do botao*/
+    width: 100%;
+    /*se basea no tamanho do botao*/
+    border-radius: 100px;
+    /*colocar atras*/
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    /*ponto inicial para .btn:hover::after*/
+    transition: all .4s; }
+  .btn--animated {
+    animation: moveInBottom 0.5s ease-out 0.75s;
+    animation-fill-mode: backwards;
+    /*adiciona automaticamente opacidade 0 antes da animação começar*/ }
+
+.header {
+  height: 95vh;
+  /* Para adicionar cor em acima da imagem podemos utilizar o rgba e apos isso colocar uma imagem de fundo*/
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
+  background-size: cover;
+  background-position: top;
   position: relative;
-  /*botao com .btn::after usara como referencia*/ }
-
-.btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
-
-.btn:active {
-  transform: translateY(-1px);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
-
-.btn--white {
-  background-color: #fff;
-  color: #777; }
-
-/* pseudo elemento*/
-/*elemento after é tratado como elemento filho*/
-.btn::after {
-  /*nesse caso queremos o botao exatamente igual*/
-  content: "";
-  /*sempre deve ser declarado, mesmo que seja vazio*/
-  display: inline-block;
-  height: 100%;
-  /*se basea no tamanho do botao*/
-  width: 100%;
-  /*se basea no tamanho do botao*/
-  border-radius: 100px;
-  /*colocar atras*/
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  /*ponto inicial para .btn:hover::after*/
-  transition: all .4s; }
-
-.btn--white::after {
-  background-color: #fff; }
-
-.btn:hover::after {
-  transform: scaleX(1.4) scaleY(1.6);
-  opacity: 0; }
-
-.btn--animated {
-  animation: moveInBottom 0.5s ease-out 0.75s;
-  animation-fill-mode: backwards;
-  /*adiciona automaticamente opacidade 0 antes da animação começar*/ }
+  /* efeito de "corte" na imagem*/
+  /*sempre em sentido horario, eixos x y*/
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  /* & copia a classe .header */ }
+  .header__logo-box {
+    position: absolute;
+    top: 4rem;
+    left: 4rem; }
+  .header__logo {
+    height: 3.5rem; }
+  .header__text-box {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center; }

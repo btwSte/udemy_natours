@@ -1,0 +1,60 @@
+/* 
+    Animaçao de texto no header 
+    pode ser definido qualquer % para animação
+*/
+@keyframes moveInLeft {
+    /* Inicio da animação */
+    0% {
+        opacity: 0;
+        /* mover apenas eixo x para a esquerda*/
+        transform: translateX(-10rem);
+    }
+
+    80% {
+        /* move eixo x para a direita*/
+        transform: translateX(1rem);
+    }
+
+    /* Final da animação */
+    100% {
+        opacity: 1;
+        /* volta para o local definido em heading-primary-main*/
+        transform: translate(0);
+    }
+}
+
+@keyframes moveInRight {
+    /* Inicio da animação */
+    0% {
+        opacity: 0;
+        /* mover apenas eixo x para a esquerda*/
+        transform: translateX(10rem);
+    }
+
+    80% {
+        /* move eixo x para a direita*/
+        transform: translateX(-1rem);
+    }
+
+    /* Final da animação */
+    100% {
+        opacity: 1;
+        /* volta para o local definido em heading-primary-main*/
+        transform: translate(0);
+    }
+}
+
+@keyframes moveInBottom {
+    /* Inicio da animação */
+    0% {
+        opacity: 0;
+        transform: translateY(3rem); /*para mover para baixo é um valor positivo*/
+    }
+
+    /* Final da animação */
+    100% {
+        opacity: 1;
+        /* volta para o local definido em heading-primary-main*/
+        transform: translate(0);
+    }
+}
