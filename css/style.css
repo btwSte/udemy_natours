@@ -53,7 +53,12 @@
   box-sizing: inherit; }
 
 html {
+  /* Define quanto é 1rem*/
   font-size: 62.5%; }
+
+body {
+  box-sizing: border-box;
+  /* bordas e padding nao serão adicionados ao height e width total*/ }
 
 body {
   font-family: 'Lato', sans-serif;
@@ -63,9 +68,7 @@ body {
   line-height: 1.7;
   color: #777;
   padding: 3rem;
-  /*espaçamento exclusivo para esse site*/
-  box-sizing: border-box;
-  /* bordas e padding nao serão adicionados ao height e width total*/ }
+  /*espaçamento exclusivo para esse site*/ }
 
 .heading-primary {
   color: #fff;
@@ -92,6 +95,27 @@ body {
     letter-spacing: 1.75rem;
     /*propriedades de animação combinadas*/
     animation: moveInRight 1s ease-out; }
+
+.heading-secondary {
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  display: inline-block;
+  background-image: linear-gradient(to right, #7ed56f, #28b485);
+  -webkit-background-clip: text;
+  color: transparent;
+  letter-spacing: .2rem;
+  transition: all .2s; }
+  .heading-secondary:hover {
+    transform: skewY(2deg) skewX(15deg) scale(1.1);
+    /* direções da sombra X Y e desfoque*/
+    text-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2); }
+
+.u-center-text {
+  text-align: center; }
+
+.u-margin-bottom-8 {
+  margin-bottom: 8rem; }
 
 .btn {
   /* pseudo elemento*/
@@ -143,9 +167,35 @@ body {
     animation-fill-mode: backwards;
     /*adiciona automaticamente opacidade 0 antes da animação começar*/ }
 
+.row {
+  max-width: 114rem;
+  margin: 0 auto; }
+  .row:not(:last-child) {
+    margin-bottom: 8rem; }
+  .row::after {
+    content: "";
+    display: table;
+    clear: both; }
+  .row [class^="col-"] {
+    float: left; }
+    .row [class^="col-"]:not(:last-child) {
+      margin-right: 6rem; }
+  .row .col-1-of-2 {
+    width: calc((100% - 6rem) / 2); }
+  .row .col-1-of-3 {
+    width: calc((100% - 2 * 6rem) / 3); }
+  .row .col-2-of-3 {
+    width: calc(2 * ((100% - 2 * 6rem) / 3) + 6rem); }
+  .row .col-1-of-4 {
+    width: calc((100% - 3 * 6rem) / 4); }
+  .row .col-2-of-4 {
+    width: calc(2 * ((100% - 3 * 6rem) / 4) + 6rem); }
+  .row .col-3-of-4 {
+    width: calc(3 * ((100% - 3 * 6rem) / 4) + 2 * 6rem); }
+
 .header {
   height: 95vh;
-  /* Para adicionar cor em acima da imagem podemos utilizar o rgba e apos isso colocar uma imagem de fundo*/
+  /* Para adicionar cor em acima da imagem podemos utilizar o rgba e apos isso colocar uma imagem de fundo */
   background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
   background-size: cover;
   background-position: top;
@@ -166,3 +216,8 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center; }
+
+.section-about {
+  background-color: #f7f7f7;
+  padding: 25rem 0;
+  margin-top: -20vh; }
