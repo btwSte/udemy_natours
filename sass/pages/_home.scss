@@ -3,3 +3,22 @@
     padding: 25rem 0;
     margin-top: -20vh;
 }
+
+.section-features {
+    padding: 20rem 0;
+    background-image: linear-gradient(
+        to right bottom /* direção do gradiente*/, 
+        rgba($color-primary-light, 0.8),
+        rgba($color-primary-dark, 0.8)) /* gradiente com opacidade 80% */, 
+    url(../img/nat-4.jpg);
+    background-size: cover;
+
+    //inclina a seção toda
+    transform: skewY(-7.4deg);
+    margin-top: -12rem;
+
+    // seleciona todos o direct children e ajusta a inclinação
+    & > * {
+        transform: skewY(7.4deg);
+    }
+}
