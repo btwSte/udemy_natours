@@ -1,0 +1,42 @@
+.composition {
+    position: relative;
+
+    &__photo {
+        width: 55%;
+        box-shadow: 0 1.5rem 4rem rgba($color-black, .4);
+        border-radius: 2px;
+        position: absolute;
+        z-index: 10;
+        transition: all .2s;
+        outline-offset: 1.5rem; //espaço entre o outline e a imagem
+
+        &--p1 {
+            left: 0;
+            top: -2rem;
+        }
+
+        &--p2 {
+            right: 0;
+            top: 2rem;
+        }
+
+        &--p3 {
+            left: 20%;
+            top: 10rem;
+        }
+
+        &:hover {
+            outline: 1.5rem solid $color-primary; //usamos outline em vez de borda para definir o outline offset
+            transform: scale(1.05) translateY(-.5rem);
+            box-shadow: 0 2.5rem 4rem rgba($color-black, .5);
+            z-index: 20;
+
+        }
+    }
+
+    //ao passar o mouse na .composition seleciona a foto que não esta o mouse
+    &:hover &__photo:not(:hover) {
+        transform: scale(.95);
+    }
+}
+
