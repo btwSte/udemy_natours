@@ -12,6 +12,7 @@
 
     /* efeito de "corte" na imagem*/ 
     /*sempre em sentido horario, eixos x y*/
+    -webkit-clip-path: polygon(0 0 /*sem alteração*/, 100% /*largura da pagina toda*/ 0 /*sem alteração*/, 100% 75vh , 0 100%);
     clip-path: polygon(0 0 /*sem alteração*/, 100% /*largura da pagina toda*/ 0 /*sem alteração*/, 100% 75vh , 0 100%);
 
 

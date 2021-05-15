@@ -1,14 +1,15 @@
 .card {
+    //Bloco para o card funcionar (flip)
     perspective: 150rem;
     -moz-perspective: 150rem;
     position: relative;
-    height: 50rem;
+    height: 52rem;
 
     &__side {
-        height: 50rem;
+        height: 52rem;
         transition: all .8s ease;
         border-radius: 3px;
-        font-size: 5rem;
+        overflow: hidden;
         position: absolute;
         top: 0;
         left: 0;
@@ -21,8 +22,10 @@
         }
 
         &--back {
+            //inicia a parte de trás ja virada em 180
             transform: rotateY(180deg);
 
+            //gradient da parte de trás do card
             &-1 {
                 background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark);
             }
@@ -37,12 +40,88 @@
         }
     }
 
+    //vira o card em 180 ao passar o mouse
     &:hover &__side--front {
-        transform: rotateY(180deg);
+        transform: rotateY(-180deg);
     }
-
-
+    
+    //ao virar o card, deixa a parte de trás na posição inicial (0)
     &:hover &__side--back {
         transform: rotateY(0);
     }
+
+    //estilizar a parte da frente do card
+    &__picture{
+        background-size: cover;
+        height: 23rem;
+        background-blend-mode: screen;
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+
+        &--1 {
+            background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark), url(../img/nat-5.jpg);
+        }
+
+        &--2 {
+            background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark), url(../img/nat-6.jpg);
+        }
+
+        &--3 {
+            background-image: linear-gradient(to right bottom, $color-tertiary-light, $color-tertiary-dark), url(../img/nat-7.jpg);
+        }
+    }
+
+    &__heading {
+        font-size: 2.8rem;
+        font-weight: 300;
+        text-align: right;
+        text-transform: uppercase;
+        color: $color-white;
+        position: absolute;
+        top: 12rem;
+        right: 2rem;
+        width: 75%;
+    }
+
+    &__heading-span {
+        padding: 1rem 1.5rem;
+        //faz a quebra de linha
+        -webkit-box-decoration-break: clone;
+        box-decoration-break: clone;
+
+        &--1 {
+            background-image: linear-gradient(to right bottom, rgba($color-secondary-light, .85), rgba($color-secondary-dark, .85));
+        }
+
+        &--2 {
+            background-image: linear-gradient(to right bottom, rgba($color-primary-light, .85), rgba($color-primary-dark, .85));
+        }
+
+        &--3{
+            background-image: linear-gradient(to right bottom, rgba($color-tertiary-light, .85), rgba($color-tertiary-dark, .85));
+        }
+    }
+
+    &__details {
+        padding: 3rem;
+
+        ul {
+            list-style: none;
+            width: 80%;
+            margin: 0 auto;
+
+            li{
+                text-align: center;
+                font-size: 1.5rem;
+                padding: 1rem;
+
+                &:not(:last-child){
+                    border-bottom: solid 1px $color-gray-light-2;
+                }
+            }
+        }
+    }
+
+    //estilizar a parte de tras do card
+
 }
